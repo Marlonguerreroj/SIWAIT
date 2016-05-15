@@ -1,0 +1,120 @@
+<?php
+require_once '../Controlador/ControlProveedor.php';
+require_once '../Controlador/ControlArticulo.php';
+$controlador = new ControlProveedor();
+$controlador2 = new ControlArticulo();
+$valor = $controlador->buscarProveedor("Todos", " ");
+?>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="../Vista/Ajax/Ajax.js"></script>
+
+
+<script language="javascript">
+    function chequearEnter(event) {
+        if (event.keyCode === 13) {
+            añadirFila();
+        }
+    }
+
+    function anular(e) {
+        tecla = (document.all) ? e.keyCode : e.which;
+        return (tecla != 13);
+    }
+
+</script>
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Registro de Pedidos</h1>
+</center>
+<br>
+<form action="../Script/ScriptPedido.php" method="post" id="form" name="form" onkeypress="return anular(event)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Codigo:  
+            </div>
+            <div class="col-md-3">
+                <input required name="codigo0" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Proveedor: 
+            </div>
+            <div class="col-md-3">
+                <select name="sel1" class="form-control" id="sel1" required>
+                    <option value="">Seleccione</option>
+                    <?php for($a=0;$a<count($valor);$a++): ?>
+                    <option value="<?php echo  $valor[$a][0] ?>"><?php echo $valor[$a][2]?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Fecha:  
+            </div>
+            <div class="col-md-3">
+                <input required  name="fecha" type="date" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Notas: 
+            </div>
+            <div class="col-md-3">
+                <textarea name="notas" class="form-control" ></textarea>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th>Referencia</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>
+                                <input onkeypress='chequearEnter2(event, document.getElementById("nombre1"), this, document.getElementById("cantidad1"))' id="codigo1" required name="codigo[]" type="text" class="form-control ">
+                            </td>
+                            <td>
+                                <input readOnly id="nombre1" name="nombre" type="text" class="form-control ">
+                            </td>
+                            <td>
+                                <input readOnly onkeypress="chequearEnter(event)"  required name="cantidad[]" id='cantidad1' type="number" class="form-control ">
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button  name="enviarPedido" type="submit" class="btn btn-success btn-lg letra">Registrar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a href="../Script/ScriptIniciarSesion.php?action=home" class="btn btn-primary btn-lg letra">Cancelar
+                </a>
+            </div>
+            <div class="col-md-4"></div>
+
+        </div>
+        <br>
+    </div>
+</form>

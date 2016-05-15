@@ -1,0 +1,149 @@
+<?php
+require_once '../Controlador/ControlSucursal.php';
+$controlador = new ControlSucursal();
+$valor2 = $controlador->buscarSucursal("Todos", " ");
+
+?>
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Informacion Empleado</h1>
+</center>
+<br>
+<br>
+<?php if( $valor !=null): ?>
+
+<div class="container"> 
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <select name="sel1" class="form-control" id="sel1" required disabled>
+                <option value="">Seleccione</option>
+                <?php for($a=0;$a<count($valor2);$a++): ?>
+                <option <?php if($valor2[$a][0]==$valor[0][2]) echo"Selected"; ?>  value="<?php echo  $valor2[$a][0] ?>"><?php echo $valor2[$a][1]?></option>
+                <?php endfor; ?>
+
+            </select>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <select name="sel2" class="form-control" id="sel2" required onchange="habilitar()" disabled>
+                <option value="">Seleccione</option>
+                <option <?php if($valor[0][3]=="Jefe de Operaciones") echo"Selected"; ?> value="Jefe de Operaciones">Jefe de operaciones</option>
+                <option <?php if($valor[0][3]=="Cajero") echo"Selected"; ?> value="Cajero">Cajero</option>
+                <option <?php if($valor[0][3]=="Administrador") echo"Selected"; ?> value="Administrador">Administrador</option>
+                <option <?php if($valor[0][3]=="Vendedor") echo"Selected"; ?> value="Vendedor">Vendedor</option>
+
+            </select>    
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">DNI:  
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][1] ?>" required  type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Nombre: 
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][9] ?>" required type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Apellido:  
+        </div>
+        <div class="col-md-3">
+            <input  readOnly value="<?php echo  $valor[0][10] ?>" required  type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Telefono: 
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][12] ?>" required  type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Celular:  
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][7] ?>"  type="number" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">E-mail: 
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][13] ?>" required  type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Direccion:
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][11] ?>" required  type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Fecha Ingreso: 
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][5] ?>"  type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Fecha salida:  
+        </div>
+        <div class="col-md-3">
+            <input readOnly  value="<?php echo  $valor[0][6] ?>"  type="date" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <div class="radio">
+
+                <label><input readOnly disabled value ="0" <?php if($valor[0][8] == 0) echo"checked"?> type="radio" name="radio">Habilitado</label>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="radio">
+                <label><input readOnly disabled value="1" <?php if($valor[0][8] == 1) echo"checked"?> type="radio" name="radio">Deshabilitado</label>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <a href="../Script/ScriptEmpleado.php?action=consultar2" class="btn btn-success btn-lg ">Volver
+            </a>
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,218 @@
+<?php
+require_once '../Controlador/ControlSucursal.php';
+$controlador = new ControlSucursal();
+$valor2 = $controlador->buscarSucursal("Todos", " ");
+?>
+<br>
+<br>
+<?php $dato = count($valor)?>
+<center>   
+    <h1 class="letra3">Registrar Comparacion</h1>
+</center>
+<br>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="../Vista/Ajax/Ajax.js"></script>
+
+<script language="javascript">
+
+</script>
+<form  action="../Script/ScriptComparacion.php" method="post" name="form2">
+    <div class="container"> 
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Codigo:  
+            </div>
+            <div class="col-md-3">
+                <input readOnly value="<?php echo $valor[0][4]?>" required name ="codigo" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Sucursal: 
+            </div>
+            <div class="col-md-3">
+                <select name="sel1" class="form-control" id="sel1" required>
+                    <option value="">Seleccione</option>
+                    <?php for($a=0;$a<count($valor2);$a++): ?>
+                    <option value="<?php echo  $valor2[$a][0] ?>"><?php echo $valor2[$a][1]?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Fecha:  
+            </div>
+            <div class="col-md-3">
+                <input required name="fecha" type="date" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Cantidad articulos: 
+            </div>
+            <div class="col-md-3">
+                <input required name="articulos" type="number" class="form-control ">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Cantidad unidades:  
+            </div>
+            <div class="col-md-3">
+                <input required name="unidades" type="number" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Notas: 
+            </div>
+            <div class="col-md-3">
+                <textarea name="notas" class="form-control" ></textarea>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="table-responsive">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th>Referencia</th>
+                                <th>Cantidad</th>
+                                <th>Valor</th>
+                                <th>Valor Transporte</th>
+                                <th>Costo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <?php for($a=0;$a<$dato;$a++): ?>
+                        <tr>
+                            <td>
+                                <input readOnly value="<?php echo $valor[$a][5]?>" required name="referencia[]" type="text" class="form-control ">
+                            </td>
+                            <td>
+                                <input required value="<?php echo $valor[$a][6]?>"  name="cantidad[]" type="number" class="form-control ">
+                            </td>
+                            <td>
+                                <input required name="valor[]"  type="number" class="form-control ">
+                            </td>
+                            <td>
+                                <input required name="valorTrans[]" type="number" class="form-control ">
+                            </td>
+                            <td>
+                                <input required name="costo[]" type="number" class="form-control ">
+                            </td>
+                            <td>
+                                <a  data-toggle="modal"  data-target="#myModal"  style="cursor:pointer;">
+                                    <span class="glyphicon glyphicon-plus-sign asd "></span>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endfor; ?>
+
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button  name="enviarComparacion" type="submit" class="btn btn-success btn-lg letra">Registrar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a href="../Script/ScriptIniciarSesion.php?action=home"  class="btn btn-primary btn-lg letra">Cancelar
+                </a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br>
+    </div>
+
+
+</form>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Registrar Serial</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <p class="letra2">Codigo:  
+                            </div>
+                            <div class="col-md-2">
+                                <input  required  name="cod" id="cod" type="text" class="form-control ">
+                            </div>
+                            <div class="col-md-1">
+                                <p class="letra2">Referencia: 
+                            </div>
+                            <div class="col-md-2">
+                                <select name="ref" class="form-control" id="ref" required>
+                                    <option value="">Seleccione</option>
+                                    <?php for($a=0;$a<count($valor);$a++): ?>
+                                    <option value="<?php echo  $valor[$a][5] ?>"><?php echo $valor[$a][5]?></option>
+                                    <?php endfor; ?>
+                                </select>                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <p class="letra2">Sucursal:  
+                            </div>
+                            <div class="col-md-2">
+                                <select name="suc" class="form-control" id="suc" required>
+                                    <option value="">Seleccione</option>
+                                    <?php for($a=0;$a<count($valor2);$a++): ?>
+                                    <option value="<?php echo  $valor2[$a][0] ?>"><?php echo $valor2[$a][1]?></option>
+                                    <?php endfor; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <p class="letra2">Pedido: 
+                            </div>
+                            <div class="col-md-2">
+                                <input readOnly name="pedi" value="<?php echo $valor[0][4]?>" id="pedi" type="text" class="form-control ">
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <p class="letra2">Descripcion:  
+                            </div>
+                            <div class="col-md-5">
+                                <input required name="desc" id="desc" type="text" class="form-control ">
+                            </div>
+
+                        </div>
+                    </div>                    
+
+
+                </div>
+                <div class="modal-footer">
+                    <a  onClick='registrarSerial(document.getElementById("cod"), document.getElementById("ref"), document.getElementById("suc"), document.getElementById("pedi"), document.getElementById("desc"))' class="btn btn-success" >Registrar</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

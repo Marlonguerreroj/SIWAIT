@@ -1,0 +1,88 @@
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Consultar Pedido</h1>
+</center>
+<br>
+<form action="../Script/ScriptPedido.php" method="post" name="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <p class="letra2">Buscar por:  
+            </div>
+            <div class="col-md-2">
+                <select name="sel" class="form-control" id="sel" required onchange="capturar()">
+                    <option value="">Seleccione</option>
+                    <option value="Fecha">Fecha</option>
+                    <option value="CodigoProv">Codigo Proveedor</option>
+                    <option value="CodigoPedi">Codigo Pedido</option>
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <p class="letra2">Informacion:  
+            </div>
+            <div class="col-md-2">
+                <input required name="informacion" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2">
+                <button name="buscar" type="submit" class="btn btn-success  letra">
+                    <span class="glyphicon glyphicons glyphicon-search"></span>
+                </button>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<?php if( $valor !=null): ?>
+<?php
+require_once '../Controlador/ControlProveedor.php';
+$controlador = new ControlProveedor();
+$valor2 = $controlador->buscarProveedor("Todos", " ");
+?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Proveedor</th>
+                            <th>Fecha</th> 
+                            <th>Referencia</th>
+                            <th>Cantidad</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <?php for($a=0;$a<count($valor);$a++): ?>
+
+                    <tr>
+                        <td><?php echo  $valor[$a][0] ?></td>
+                        <td><?php for($b=0;$b<count($valor2);$b++){ if($valor[$a][1]== $valor2[$b][0]){ echo  $valor2[$b][2];}}?></td>
+                        <td><?php echo  $valor[$a][2] ?></td>
+                        <td><?php echo  $valor[$a][5] ?></td>
+                        <td><?php echo  $valor[$a][6] ?></td>
+                        <td>
+                          
+                             <a onclick="window.location ='../Script/ScriptComparacion.php?codigo='+'<?php echo $valor[$a][0]?>'" style="cursor:pointer;">
+                                <span class="glyphicon glyphicon-download-alt asd "></span>
+                            </a>
+                             <a onclick="window.location ='../Script/ScriptPedido.php?codigo='+'<?php echo  $valor[$a][0] ?>&referencia='+'<?php echo  $valor[$a][5] ?>'" style="cursor:pointer;">
+                                <span class="glyphicon glyphicon-info-sign asd "></span>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endfor; ?>
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,83 @@
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Consultar Cliente</h1>
+</center>
+<br>
+<form name="form" action="../Script/ScriptCliente.php" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <p class="letra2">Buscar por:  
+            </div>
+            <div class="col-md-2">
+                <select required name="sel" class="form-control" id="sel" onchange="capturar()">
+                    <option value="" >Seleccione</option>
+                    <option value="Todos" >Todos</option>
+                    <option value="Nombre" >Nombre</option>
+                    <option value="Dni">Dni</option>
+                </select>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <p class="letra2">Informacion:  
+            </div>
+            <div class="col-md-2">
+                <input id="informacion" name="informacion" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2">
+                <button name="buscar" type="submit" class="btn btn-success  letra">
+                    <span class="glyphicon glyphicons glyphicon-search"></span>
+                </button>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<?php if( $valor !=null): ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Dni</th>
+                            <th>Telefono</th>
+                            <th>Direccion</th>
+                            <th>E-mail</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <?php for($a=0;$a<count($valor);$a++): ?>
+
+                    <tr>
+                        <td><?php echo  $valor[$a][1] ?></td>
+                        <td><?php echo  $valor[$a][2]?></td>
+                        <td><?php echo  $valor[$a][0] ?></td>
+                        <td><?php echo  $valor[$a][4] ?></td>
+                        <td><?php echo  $valor[$a][3] ?></td>
+                        <td><?php echo  $valor[$a][5] ?></td>
+                        <td>
+                            <a onclick="window.location='../Script/ScriptCliente.php?dni='+'<?php echo  $valor[$a][0] ?>'" style="cursor: pointer;">
+                                <span class="glyphicon glyphicon-edit asd "></span>
+                            </a>
+                        </td>
+
+                    </tr>
+                    <?php endfor; ?>
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<?php endif; ?>
+

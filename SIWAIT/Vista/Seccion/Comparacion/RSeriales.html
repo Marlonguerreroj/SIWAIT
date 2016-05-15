@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <title>
+            #title#
+        </title>
+        <link  rel="stylesheet" type="text/css" href="../Vista/css/bootstrap.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <section>
+            <br>
+            <br>
+            <center>   
+                <h1 class="letra3">Registro de Serial</h1>
+            </center>
+            <br>
+            <div class="container"> 
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div class="table-responsive">
+                            <table class="table" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>Referencia</th>
+                                        <th>Referencia</th>
+                                        <th>Sucursal</th>
+                                        <th>Pedido Comparacion</th>
+                                        <th>Descripcion</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <?php for($a=0;$a<$dato;$a++): ?>
+                                <tr>
+                                    <td>
+                                        <input readOnly value="<?php echo $valor[$a][5]?>" required name="referencia[]" type="text" class="form-control ">
+                                    </td>
+                                    <td>
+                                        <input required value="<?php echo $valor[$a][6]?>"  name="cantidad[]" type="number" class="form-control ">
+                                    </td>
+                                    <td>
+                                        <input required name="valor[]"  type="number" class="form-control ">
+                                    </td>
+                                    <td>
+                                        <input required name="valorTrans[]" type="number" class="form-control ">
+                                    </td>
+                                    <td>
+                                        <input required name="costo[]" type="number" class="form-control ">
+                                    </td>
+                                    <td>
+                                        <a onclick="abrir('../Vista/Seccion/Comparacion/Rseriales.html')" style="cursor:pointer;">
+                                            <span class="glyphicon glyphicon-plus-sign asd "></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php endfor; ?>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <div class="table-responsive">
+                                <table class="table" id="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Referencia</th>
+                                            <th>Cantidad</th>
+                                            <th>Valor</th>
+                                            <th>Valor Transporte</th>
+                                            <th>Costo</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <?php for($a=0;$a<$dato;$a++): ?>
+                                    <tr>
+                                        <td>
+                                            <input readOnly value="<?php echo $valor[$a][5]?>" required name="referencia[]" type="text" class="form-control ">
+                                        </td>
+                                        <td>
+                                            <input required value="<?php echo $valor[$a][6]?>"  name="cantidad[]" type="number" class="form-control ">
+                                        </td>
+                                        <td>
+                                            <input required name="valor[]"  type="number" class="form-control ">
+                                        </td>
+                                        <td>
+                                            <input required name="valorTrans[]" type="number" class="form-control ">
+                                        </td>
+                                        <td>
+                                            <input required name="costo[]" type="number" class="form-control ">
+                                        </td>
+                                        <td>
+                                            <a onclick="abrir('../Vista/Seccion/Comparacion/Rseriales.html')" style="cursor:pointer;">
+                                                <span class="glyphicon glyphicon-plus-sign asd "></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <?php endfor; ?>
+
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+        </section>
+
+    </body>
+</html>
+

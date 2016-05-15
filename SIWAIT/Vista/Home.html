@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            #title#
+        </title>
+        <link  rel="stylesheet" type="text/css" href="../Vista/css/bootstrap.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <style>
+            .glyphicone{
+                font-size: 1.6em;
+            }
+            .glyphicons{
+                font-size: 1.2em;
+            }
+            .asd{
+                color:#5cb85c;
+                font-size: 1.5em;
+            }
+            .glyphicon{
+                font-size: 1.5em;
+            }
+            .c{
+                margin: 0.5% auto;
+            }
+            .i{
+                margin: 4%;
+                width: 30%;
+                height: 30%;
+            }
+            .asda{
+                color:#a94442;
+                font-size: 1.5em;
+            }
+        </style>
+        <script>
+            function capturar() {
+                var posicion = document.getElementById("sel").options.selectedIndex;
+                var valor = document.getElementById("sel").options[posicion].text;
+                if (valor == "Todos") {
+                    document.form.informacion.readOnly = true;
+                    document.form.informacion.value = " ";
+                } else {
+                    document.form.informacion.readOnly = false;
+                    document.form.informacion.value = "";
+
+                }
+            }
+
+            function habilitar() {
+                var posicion = document.getElementById("sel2").options.selectedIndex;
+                var valor = document.getElementById("sel2").options[posicion].text;
+                if (valor == "Vendedor") {
+                    document.form2.contraseña.readOnly = true;
+                    document.form2.contraseña.value = "";
+                } else {
+                    document.form2.contraseña.readOnly = false;
+                }
+            }
+            var a = 2;
+            function añadirFila()
+            {
+                var table = document.getElementById("table");
+
+                var codigo = "codigo" + a;
+                var nombre = "nombre" + a;
+                var cantidad = "cantidad" + a;
+                var row = table.insertRow(a);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var campo1 = document.createElement("input");
+                campo1.type = "text";
+                campo1.required = true;
+                campo1.setAttribute("onkeypress", "chequearEnter2(event, document.getElementById('" + nombre + "'), this,document.getElementById('" + cantidad + "'))");
+                campo1.id = codigo;
+                campo1.name = "codigo[]";
+                campo1.className = "form-control";
+                cell1.appendChild(campo1);
+
+                var campo2 = document.createElement("input");
+                campo2.type = "text";
+                campo2.id = nombre;
+                campo2.name = "nombre";
+                campo2.required = true;
+                campo2.readOnly = true;
+                campo2.className = "form-control";
+                cell2.appendChild(campo2);
+
+                var campo3 = document.createElement("input");
+                campo3.type = "text";
+                campo3.readOnly = true;
+                campo3.required = true;
+                campo3.name = "cantidad[]"
+                campo3.setAttribute("onkeypress", "chequearEnter(event)");
+                campo3.id = cantidad;
+                campo3.className = "form-control";
+                cell3.appendChild(campo3);
+
+                var campo4 = document.createElement("button");
+                campo4.innerHTML = "Borrar";
+                campo4.className = "btn btn-success";
+                campo4.onclick = function ()
+                {
+                    myDeleteFunction(table, this.parentNode.parentNode.rowIndex, 1)
+                };
+                cell4.appendChild(campo4);
+                a++;
+
+
+            }
+
+            var b = 2;
+            function añadirFila2()
+            {
+                var table = document.getElementById("table");
+
+                var codigo = "codigo" + b;
+                var nombre = "nombre" + b;
+                var cantidad = "cantidad" + b;
+                var total = "total" + b;
+                var row = table.insertRow(b);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+
+                var campo1 = document.createElement("input");
+                campo1.type = "text";
+                campo1.required = true;
+                campo1.setAttribute("onkeypress", "chequearEnter2(event, document.getElementById('" + nombre + "'), this,document.getElementById('" + cantidad + "'),document.getElementById('" + total + "'))");
+                campo1.id = codigo;
+                campo1.name = "codigo[]";
+                campo1.className = "form-control";
+                cell1.appendChild(campo1);
+
+                var campo2 = document.createElement("input");
+                campo2.type = "text";
+                campo2.id = nombre;
+                campo2.name = "nombre";
+                campo2.required = true;
+                campo2.readOnly = true;
+                campo2.className = "form-control";
+                cell2.appendChild(campo2);
+
+                var campo3 = document.createElement("input");
+                campo3.type = "text";
+                campo3.readOnly = true;
+                campo3.required = true;
+                campo3.name = "cantidad[]"
+                campo3.setAttribute("onkeypress", "chequearEnter(event)");
+                campo3.id = cantidad;
+                campo3.className = "form-control";
+                cell3.appendChild(campo3);
+                a++;
+
+                var campo4 = document.createElement("input");
+                campo4.type = "text";
+                campo4.readOnly = true;
+                campo4.name = "total[]";
+                campo4.id = total;
+                campo4.className = "form-control";
+                cell4.appendChild(campo4);
+
+                var campo5 = document.createElement("button");
+                campo5.innerHTML = "Borrar";
+                campo5.className = "btn btn-success";
+                campo5.onclick = function ()
+                {
+                    myDeleteFunction(table, this.parentNode.parentNode.rowIndex, 2)
+                };
+                cell5.appendChild(campo5);
+                b++;
+
+            }
+            function myDeleteFunction(element, c, num) {
+                element.deleteRow(c);
+                if (num === 1) {
+                    a--;
+                } else {
+                    b--;
+                }
+            }
+
+        </script>
+
+    </head>
+    <body>
+
+        <header>
+            #header#
+        </header>
+        <section>
+            #section#
+        </section>
+    </body>
+</html>

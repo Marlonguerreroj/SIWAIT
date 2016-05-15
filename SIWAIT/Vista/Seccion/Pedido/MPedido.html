@@ -1,0 +1,80 @@
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Informacion del Pedido</h1>
+</center>
+<br>
+<br>
+<?php if( $valor !=null): ?>
+<?php
+require_once '../Controlador/ControlProveedor.php';
+$controlador = new ControlProveedor();
+$valor2 = $controlador->buscarProveedor("Todos", " ");
+?>
+<div class="container"> 
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Codigo:  
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][0] ?>" required  type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Proveedor: 
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php for($b=0;$b<count($valor2);$b++){ if($valor[0][1]== $valor2[$b][0]){ echo  $valor2[$b][2];}}?>" required type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Fecha:  
+        </div>
+        <div class="col-md-3">
+            <input  readOnly value="<?php echo  $valor[0][2] ?>" required  type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Referencia: 
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][5] ?>" required  type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Cantidad:  
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][6] ?>"  type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Notas: 
+        </div>
+        <div class="col-md-3">
+            <textarea readOnly  name="notas" class="form-control" ><?php echo  $valor[0][3] ?></textarea>
+
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <a href="../Script/ScriptPedido.php?action=consultar2" class="btn btn-success btn-lg ">Volver
+            </a>
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+</div>
+<?php endif; ?>

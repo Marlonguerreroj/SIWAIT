@@ -1,0 +1,87 @@
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Consultar sucursal</h1>
+</center>
+<br>
+<form name="form" action="../Script/ScriptSucursal.php" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <p class="letra2">Buscar por:  
+            </div>
+            <div class="col-md-2">
+                <select name="sel" id="sel" class="form-control"  onchange="capturar()" required>
+                    <option value="" >Seleccione</option>
+                    <option value="Todos" >Todos</option>
+                    <option value="Codigo" >Codigo</option>
+                    <option value="Nombre" >Nombre</option>
+                </select>
+
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <p class="letra2">Informacion:  
+            </div>
+            <div class="col-md-2">
+                <input required id="informacion" name="informacion" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2">
+                <button name="buscar" type="submit" class="btn btn-success  letra">
+                    <span class="glyphicon glyphicons glyphicon-search"></span>
+                </button>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+
+<?php if( $valor !=null): ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="table-responsive">
+                <table  class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Pagina Web</th>
+                            <th>Direccion</th>
+                            <th>Ciudad</th>
+                            <th>Pais</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <?php for($a=0;$a<count($valor);$a++): ?>
+                    <tr>
+                        <td><?php echo  $valor[$a][0] ?></td>
+                        <td><?php echo  $valor[$a][1]?></td>
+                        <td><?php echo  $valor[$a][2] ?></td>
+                        <td><?php echo  $valor[$a][3] ?></td>
+                        <td><?php echo  $valor[$a][4] ?></td>
+                        <td><?php echo  $valor[$a][5] ?></td>
+                        <td><?php echo  $valor[$a][6] ?></td>
+                        <td><?php echo  $valor[$a][7] ?></td>
+                        <td>
+                            <a onclick="window.location ='../Script/ScriptSucursal.php?codigo='+'<?php echo  $valor[$a][0] ?>'" style="cursor:pointer;">
+                                <span class="glyphicon glyphicon-edit asd "></span>
+                            </a>
+                        </td>
+                    </tr> 
+
+                    <?php endfor; ?>
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<?php endif; ?>

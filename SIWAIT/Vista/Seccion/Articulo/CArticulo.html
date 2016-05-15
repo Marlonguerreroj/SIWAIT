@@ -1,0 +1,110 @@
+<?php
+require_once '../Controlador/ControlSucursal.php';
+$controlador = new ControlSucursal();
+$valor2 = $controlador->buscarSucursal("Todos", " ");
+?>
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Consultar Articulo</h1>
+</center>
+<br>
+<form name="form" action="../Script/ScriptArticulo.php" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <p class="letra2">Sucursal:  
+            </div>
+            <div class="col-md-2">
+                <select required name="sel0" class="form-control" id="sel" onchange="capturar()">
+                    <option value="" >Seleccione</option>
+                    <option value="Todos" >Todas</option>
+                    <?php for($a=0;$a<count($valor2);$a++): ?>
+                    <option value="<?php echo  $valor2[$a][0] ?>"><?php echo $valor2[$a][1]?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <p class="letra2">Buscar por:  
+            </div>
+            <div class="col-md-2">
+                <select required name="sel" class="form-control" id="sel" onchange="capturar()">
+                    <option value="" >Seleccione</option>
+                    <option value="Tipo" >Tipo</option>
+                    <option value="Referencia" >Referencia</option>
+                    <option value="Nombre">Nombre</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <p class="letra2">Informacion:  
+            </div>
+            <div class="col-md-2">
+                <input required id="informacion" name="informacion" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2">
+                <button name="buscar" type="submit" class="btn btn-success  letra">
+                    <span class="glyphicon glyphicons glyphicon-search"></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<?php if( $valor !=null): ?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sucursal</th>
+                            <th>Referencia</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Cantidad</th>
+                            <th>Valor</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <?php for($a=0;$a<count($valor);$a++): ?>
+
+                    <tr>
+                        <td>
+                            <?php
+                            for($b=0;$b<count($valor2);$b++){
+                            if($valor[$a][1]== $valor2[$b][0]){
+                            echo  $valor2[$b][1];
+                            }
+                            }
+                            ?>
+                        </td>
+                        <td><?php echo  $valor[$a][0]?></td>
+                        <td><?php echo  $valor[$a][8] ?></td>
+                        <td><?php echo  $valor[$a][9] ?></td>
+                        <td><?php echo  $valor[$a][2] ?></td>
+                        <td><?php echo  number_format($valor[$a][4],0,",","."); ?></td>
+                        <td>
+                            <a onclick="window.location = '../Script/ScriptArticulo.php?referencia=' + '<?php echo  $valor[$a][0] ?>&sucursal=' + '<?php echo  $valor[$a][1] ?>'" style="cursor: pointer;">
+                                <span class="glyphicon glyphicon-edit asd "></span>
+                            </a>
+                            <a onclick="window.location = '../Script/ScriptArticulo.php?referencia2=' + '<?php echo  $valor[$a][0] ?>&sucursal2=' + '<?php echo  $valor[$a][1] ?>'" style="cursor:pointer;">
+                                <span class="glyphicon glyphicon-info-sign asd "></span>
+                            </a>
+                        </td>
+
+                    </tr>
+                    <?php endfor; ?>
+
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+<?php endif; ?>

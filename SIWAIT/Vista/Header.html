@@ -1,0 +1,82 @@
+<?php
+$dato = $_SESSION['usuario'];
+?>
+<div class="navbar navbar-default navbar-fixed-top bg-col ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> 
+            <a href="../Script/ScriptIniciarSesion.php?action=home" class="navbar-brand" rel="home">
+                <img style="max-width: 90px; margin-top: -15px;" src="../Vista/img/logo1.png">
+            </a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <?php if($dato[0][0]== "Jefe de Operaciones"): ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle letra2" data-toggle="dropdown">Sucursal<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../Script/ScriptSucursal.php?action=registrar" class="letra">Registrar Sucursal</a></li>
+                        <li><a href="../Script/ScriptSucursal.php?action=consultar" class="letra">Consultar Sucursal</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle letra2" data-toggle="dropdown">Proveedor<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../Script/ScriptProveedor.php?action=registrar" class="letra">Registrar Proveedor</a></li>
+                        <li><a href="../Script/ScriptProveedor.php?action=consultar" class="letra">Consultar Proveedor</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle letra2" data-toggle="dropdown">Empleado<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../Script/ScriptEmpleado.php?action=registrar" class="letra">Registrar Empleado</a></li>
+                        <li><a href="../Script/ScriptEmpleado.php?action=consultar" class="letra">Consultar Empleado</a></li>
+                    </ul>
+                </li>
+                <?php endif; ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle letra2" data-toggle="dropdown">Cliente<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../Script/ScriptCliente.php?action=registrar" class="letra">Registrar Cliente</a></li>
+                        <li><a href="../Script/ScriptCliente.php?action=consultar" class="letra">Consultar Cliente</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle letra2" data-toggle="dropdown">Articulo<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../Script/ScriptArticulo.php?action=registrar" class="letra">Registrar Articulo</a></li>
+                        <li><a href="../Script/ScriptArticulo.php?action=consultar" class="letra">Consultar Articulo</a></li>
+                        <li><a href="../Script/ScriptArticulo.php?action=registrarExtra" class="letra">Registrar Articulo Extra</a></li>
+                        <li><a href="../Script/ScriptArticulo.php?action=consultarExtra" class="letra">Consultar Articulo Extra</a></li>
+                        <li><a href="../Script/ScriptPedido.php?action=registrar" class="letra">Registrar Pedido</a></li>
+                        <li><a href="../Script/ScriptPedido.php?action=consultar" class="letra">Consultar Pedido</a></li>
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle letra2" data-toggle="dropdown">Ventas<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../Script/ScriptVenta.php?action=registrar" class="letra">Registrar Venta</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav  navbar-right">
+                <li><br class="letra"><p>Bienvenido <?php echo $dato[0][2]?>
+                </li>
+                <li><a href="../Script/ScriptIniciarSesion.php?action=cerrar">
+                        <span class="glyphicon glyphicone glyphicon-off"></span>
+                    </a></li>
+            </ul>
+        </div>
+    </div>   
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

@@ -1,0 +1,112 @@
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Informacion Proveedor</h1>
+</center>
+<br>
+<br>
+<?php if( $valor !=null): ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Codigo:  
+        </div>
+        <div class="col-md-3">
+            <input required readOnly name="codigo" value="<?php echo  $valor[0][0] ?>" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">NIT: 
+        </div>
+        <div class="col-md-3">
+            <input required readOnly name="nit" value="<?php echo  $valor[0][1] ?>" type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Nombre:  
+        </div>
+        <div class="col-md-3">
+            <input required readOnly value="<?php echo  $valor[0][2] ?>" name="nombre" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Pagina web: 
+        </div>
+        <div class="col-md-3">
+            <input name="pagina" readOnly value="<?php echo  $valor[0][5] ?>" type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Telefono:  
+        </div>
+        <div class="col-md-3">
+            <input required readOnly value="<?php echo  $valor[0][7] ?>" name="telefono" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">E-mail: 
+        </div>
+        <div class="col-md-3">
+            <input required readOnly value="<?php echo  $valor[0][8] ?>" name="email" type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Tipo cuenta bancaria:  
+        </div>
+        <div class="col-md-3">
+            <br>
+            <input required readOnly value="<?php echo  $valor[0][9] ?>" name="tipoCuentaBancaria" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">N&ordm; cuenta bancaria: 
+        </div>
+        <div class="col-md-3">
+            <br>
+            <input required readOnly value="<?php echo  $valor[0][3] ?>" name="nCuentaBancaria" type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Cuenta Bancaria:  
+        </div>
+        <div class="col-md-3">
+            <input required readOnly value="<?php echo  $valor[0][4] ?>" name="cuentaBancaria" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Nombre contacto: 
+        </div>
+        <div class="col-md-3">
+            <input required readOnly value="<?php echo  $valor[0][6] ?>" name="nombreContacto" type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>     
+    <br>
+    <div class="row">
+        <div class="col-md-10"></div>
+        
+        <div class="col-md-2">
+            <a href="../Script/ScriptProveedor.php?action=consultar2" class="btn btn-success btn-lg">Volver</a>
+        </div>
+    </div>     
+
+</div>
+<?php endif; ?>
+

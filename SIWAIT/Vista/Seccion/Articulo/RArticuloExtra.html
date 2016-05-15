@@ -1,0 +1,108 @@
+<br>
+<?php
+require_once '../Controlador/ControlSucursal.php';
+$controlador = new ControlSucursal();
+$valor = $controlador->buscarSucursal("Todos", " ");
+?>
+<br>
+<center>   
+    <h1 class="letra3">Registro de Articulo Extra</h1>
+</center>
+<br>
+<form action="../Script/ScriptArticulo.php" method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Codigo:  
+            </div>
+            <div class="col-md-3">
+                <input required name="codigo" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Sucursal: 
+            </div>
+            <div class="col-md-3">
+                <select name="sel1" class="form-control" id="sel1" required>
+                    <option value="">Seleccione</option>
+                    <?php for($a=0;$a<count($valor);$a++): ?>
+                    <option value="<?php echo  $valor[$a][0] ?>"><?php echo $valor[$a][1]?></option>
+                    <?php endfor; ?>
+                </select>            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Nombre:  
+            </div>
+            <div class="col-md-3">
+                <input required name="nombre" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Cantidad:
+            </div>
+            <div class="col-md-3">
+                <input required name="cantidad" type="number" class="form-control ">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Fecha de entrada:  
+            </div>
+            <div class="col-md-3">
+                <br>
+                <input required name="fEntrada" type="date" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Costo por unidad:
+            </div>
+            <div class="col-md-3">
+                <br>
+                <input required name="costo" type="number" class="form-control ">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Valor:  
+            </div>
+            <div class="col-md-3">
+                <input required name="valor" type="number" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Notas:
+            </div>
+            <div class="col-md-3">
+                <textarea name="notas" class="form-control" ></textarea>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button name="enviarExtra" type="submit" class="btn btn-success btn-lg letra">Registrar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a href="../Script/ScriptIniciarSesion.php?action=home" class="btn btn-primary btn-lg letra">Cancelar
+                </a>
+            </div>
+            <div class="col-md-4"></div>
+
+        </div>
+    </div>
+</form>

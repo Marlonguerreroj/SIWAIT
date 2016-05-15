@@ -1,0 +1,110 @@
+<?php
+require_once '../Controlador/ControlSucursal.php';
+$controlador = new ControlSucursal();
+$valor2 = $controlador->buscarSucursal("Todos", " ");
+
+?>
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Informacion del Articulo Extra</h1>
+</center>
+<br>
+<br>
+<?php if( $valor !=null): ?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Codigo:  
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][0] ?>" name="codigo" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Sucursal: 
+        </div>
+        <div class="col-md-3">
+            <select name="sel1" class="form-control" id="sel1" required disabled>
+                <option value="">Seleccione</option>
+                <?php for($a=0;$a<count($valor2);$a++): ?>
+                <option <?php if($valor2[$a][0]==$valor[0][1]) echo"Selected"; ?>  value="<?php echo  $valor2[$a][0] ?>"><?php echo $valor2[$a][1]?></option>
+                <?php endfor; ?>
+
+            </select> 
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Nombre:  
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][2] ?>" name="nombre" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Cantidad:
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][4] ?>" name="cantidad" type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Fecha de entrada:  
+        </div>
+        <div class="col-md-3">
+            <br>
+            <input readOnly value="<?php echo  $valor[0][6] ?>" name="fEntrada" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Costo por unidad:
+        </div>
+        <div class="col-md-3">
+            <br>
+            <input readOnly value="<?php echo  $valor[0][7] ?>" name="costo" type="text" class="form-control ">
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <p class="letra2">Valor:  
+        </div>
+        <div class="col-md-3">
+            <input readOnly value="<?php echo  $valor[0][3] ?>" name="valor" type="text" class="form-control ">
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <p class="letra2">Notas:
+        </div>
+        <div class="col-md-3">
+            <textarea readOnly  name="notas" class="form-control" ><?php echo  $valor[0][5] ?></textarea>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2">
+            <a href="../Script/ScriptArticulo.php?action=consultarExtra2" class="btn btn-success btn-lg ">Volver
+            </a>
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+
+
+</div>
+<?php endif; ?>

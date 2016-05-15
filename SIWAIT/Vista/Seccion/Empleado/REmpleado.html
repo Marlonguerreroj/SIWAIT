@@ -1,0 +1,143 @@
+<?php
+require_once '../Controlador/ControlSucursal.php';
+$controlador = new ControlSucursal();
+$valor = $controlador->buscarSucursal("Todos", " ");
+?>
+<br>
+<br>
+<center>   
+    <h1 class="letra3">Registro de empleado</h1>
+</center>
+<br>
+<form  action="../Script/ScriptEmpleado.php" method="post" name="form2">
+    <div class="container"> 
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <select name="sel1" class="form-control" id="sel1" required>
+                    <option value="">Seleccione</option>
+                    <?php for($a=0;$a<count($valor);$a++): ?>
+                    <option value="<?php echo  $valor[$a][0] ?>"><?php echo $valor[$a][1]?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <select name="sel2" class="form-control" id="sel2" required onchange="habilitar()">
+                    <option value="">Seleccione</option>
+                    <option value="Jefe de Operaciones">Jefe de operaciones</option>
+                    <option value="Cajero">Cajero</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Vendedor">Vendedor</option>
+
+                </select>    
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Codigo:  
+            </div>
+            <div class="col-md-3">
+                <input required name ="codigo" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">DNI: 
+            </div>
+            <div class="col-md-3">
+                <input required name="dni" type="number" class="form-control ">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Nombre:  
+            </div>
+            <div class="col-md-3">
+                <input required name="nombre" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Apellido: 
+            </div>
+            <div class="col-md-3">
+                <input required name="apellido" type="text" class="form-control ">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Telefono:  
+            </div>
+            <div class="col-md-3">
+                <input name="telefono" type="number" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Celular: 
+            </div>
+            <div class="col-md-3">
+                <input required name="celular" type="number" class="form-control ">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Contraseña:  
+            </div>
+            <div class="col-md-3">
+                <input pattern=".{6,14}" required title="6 a 14 caracteres"  id="contraseña" autocomplete="off" name="contraseña" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">E-mail: 
+            </div>
+            <div class="col-md-3">
+                <input name="email" type="email" class="form-control ">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <p class="letra2">Direccion:  
+            </div>
+            <div class="col-md-3">
+                <input  name="direccion" type="text" class="form-control ">
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1">
+                <p class="letra2">Fecha ingreso: 
+            </div>
+            <div class="col-md-3">
+                <input required  name="fIngreso" type="date" class="form-control">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button  name="enviar" type="submit" class="btn btn-success btn-lg letra">Registrar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <a href="../Script/ScriptIniciarSesion.php?action=home" class="btn btn-primary btn-lg letra">Cancelar
+                </a>
+            </div>
+            <div class="col-md-4"></div>
+
+        </div>
+    </div>
+</form>
